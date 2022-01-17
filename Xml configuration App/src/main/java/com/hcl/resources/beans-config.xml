@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.hcl.spring.Project" id="proj">
+		<constructor-arg value="1234" />
+		<constructor-arg value="project1" />
+		
+	</bean>
+
+	<bean class="com.hcl.spring.Employee" id="emp" 
+		init-method="employeeInit" destroy-method="employeeDestroy">
+		<property name="id" value="1001" />
+		<property name="name" value="Arjun" />
+		<property name="salary" value="50000.00" />
+		<property name="project" ref="proj" />
+		<property name="roles">
+			<list>
+				<value>Manager</value>
+				<value>Developer</value>
+				<value>Tester</value>
+				<value>Scrum Master</value>
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
