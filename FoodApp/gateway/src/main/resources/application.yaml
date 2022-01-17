@@ -1,0 +1,25 @@
+server.port: 9093
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: gatewayservice
+  cloud:
+    gateway:
+      routes:
+      - id: userservice
+        uri: lb://userservice
+        predicates:
+        - Path=/api/users/**
+      - id: menuservice
+        uri: lb://menuservice
+        predicates:
+        - Path=/foodItems/**
+      - id: orderservice
+        uri: lb://orderservice
+        predicates:
+        - Path=/orders/**
